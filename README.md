@@ -5,7 +5,7 @@
 ## 💻 GETTING STARTED
 
 ``` bash
-git clone https://github.com/VuHoaBinh/Health-Care-Backend.git
+git clone https://github.com/VuHoaBinh/Healthy-Care_Backend.git
 ```
 Use the npm init command to create a package.json file for your application:
 ``` bash
