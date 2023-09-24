@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit data</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <p>123asdfafd</p>
+    <div class="container">
+        <form action="/put-crud" method="POST">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Binh" name="firstName" value="<%= getInforID.firstName %>">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last Name: </label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Vu Hoa" name="lastName" value="<%= getInforID.lastName %>">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="33 Main St" name="address" value="<%= getInforID.address %>">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" placeholder="123-123-1234" name="phone" value="<%= getInforID.phone %>">
+                </div>
+            </div>
+            <input type="text" name="id" value="<%= getInforID.id %> " hidden>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</body>
+
+</html>

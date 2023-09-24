@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display CRUD view </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid black;
+        }
+        
+        .table2 {
+            border-collapse: collapse;
+            border-spacing: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container col-12">
+        <h2 class="text-center">Data Views</h2>
+        <table class="table table2 col-12">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Gender</th>
+                    <th>Image</th>
+                    <th>RoleID</th>
+                    <th>Position</th>
+                </tr>
+            </thead>
+            <% for(let i=0; i < dataTable.length; i++) { %>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= dataTable[i].email %>
+                        </td>
+                        <td>
+                            <%= dataTable[i].password %>
+                        </td>
+                        <td>
+                            <%= dataTable[i].firstName %>
+                        </td>
+                        <td>
+                            <%= dataTable[i].lastName %>
+                        </td>
+                        <td>
+                            <%= dataTable[i].address %>
+                        </td>
+                        <td>
+                            <%= dataTable[i].phone %>
+                        </td>
+                        <td>
+                            <%= dataTable[i].gender %>
+                        </td>
+                        <td>
+                            <%= dataTable[i].image %>
+                        </td>
+                        <td>
+                            <%= dataTable[i].roleID %>
+                        </td>
+                        <td>
+                            <%= dataTable[i].position %>
+                        </td>
+                        <td style="display: inline-block;">
+                            <a href="/edit-crud?id=<%= dataTable[i].id %>" class="btn btn-warning">Edit</a>
+                            <a href="/delete-crud?id=<%= dataTable[i].id %>" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+                <% } %>
+        </table>
+
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js "></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js "></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js "></script>
+
+</html>
