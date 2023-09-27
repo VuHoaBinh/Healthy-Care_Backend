@@ -1,7 +1,8 @@
 const userService = require("../services/userService");
 
 let handleAllUsers = async (req, res) => {
-  let id = req.body.id;
+  // let id = req.body.id;
+  let id = req.query.id;
   // null
   if (!id) {
     return res.status(200).json({

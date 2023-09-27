@@ -22,25 +22,26 @@
 
 <body>
 
-    <div class="container col-12">
+    <div class="container text-center col-12">
         <h2 class="text-center">Data Views</h2>
-        <table class="table table2 col-12">
-            <thead>
+        <table class="table table2">
+            <thead className="thead-dark">
                 <tr>
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>FirstName</th>
-                    <th>LastName</th>
-                    <th>Address</th>
-                    <th>Phone</th>
-                    <th>Gender</th>
-                    <th>Image</th>
-                    <th>RoleID</th>
-                    <th>Position</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">RoleID</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
+            <tbody>
             <% for(let i=0; i < dataTable.length; i++) { %>
-                <tbody>
                     <tr>
                         <td>
                             <%= dataTable[i].email %>
@@ -77,8 +78,8 @@
                             <a href="/delete-crud?id=<%= dataTable[i].id %>" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
+                    <% } %>
                 </tbody>
-                <% } %>
         </table>
 
     </div>
