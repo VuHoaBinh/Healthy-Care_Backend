@@ -1,8 +1,8 @@
 // create function
 const db = require("../models/index");
 
-var bcrypt = require("bcryptjs"); // import hash
-var salt = bcrypt.genSaltSync(10);
+const bcrypt = require("bcryptjs"); // import hash
+const salt = bcrypt.genSaltSync(10);
 // var hash = bcrypt.hashSync("B4c0/\/", salt);
 // Store hash in your password DB.
 

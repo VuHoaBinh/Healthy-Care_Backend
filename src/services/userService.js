@@ -1,5 +1,19 @@
 const db = require("../models/index");
-var bcrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
+
+const salt = bcrypt.genSaltSync(10);
+
+let hashUserPassword = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      // await to priod to hash
+      var hash = await bcrypt.hashSync(data, salt); // hash password
+      resolve(hash);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 
 let handleUserlogin = (email, password) => {
   return new Promise(async (resolve, reject) => {
@@ -83,7 +97,79 @@ let checkUserMail = (userEmail) => {
     }
   });
 };
+
+let getCreateNewUser = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let hashPasswordFromBcrypt = await hashUserPassword(data.password);
+      let check = await checkUserMail(data.email);
+      if (check === true) {
+        resolve({ errCode: 0, errMessage: "Wrong" });
+      } else {
+        await db.User.create({
+          email: data.email,
+          password: hashPasswordFromBcrypt,
+          firstName: data.firstname,
+          lastName: data.lastname,
+          address: data.address,
+          phone: data.phone,
+          gender: data.gender === "male" ? true : false,
+          // image: data.STRING,
+          roleID: data.roleID,
+          position: data.position,
+        });
+        resolve({ errCode: 0, errMessage: "OK" });
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+let DeleteUser = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let user = await db.User.findOne({ where: { id: id } });
+      if (user) {
+        await user.destroy();
+        resolve({ errCode: 0, errMessage: "ok delete" });
+      }
+      resolve({ errCode: 2, errMessage: "Not exists" });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+let UpdateUser = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (data.id) {
+        resolve({ errCode: 2, errMessage: "Wrong to find" });
+      }
+
+      let user = await db.User.findOne({ where: { id: data.id }, raw: false });
+      if (user) {
+        user.firstName = data.firstName;
+        user.lastName = data.lastName;
+        user.address = data.address;
+        user.phone = data.phone;
+
+        await user.save(); // save data
+        resolve({ errCode: 0, errMessage: "Update ok" });
+      } else {
+        resolve({ errCode: 2, errMessage: "Not find to update" });
+      }
+    } catch (e) {
+      reject({ errCode: 1, errMessage: "Wrong update" });
+    }
+  });
+};
+
 module.exports = {
   handleUserlogin: handleUserlogin,
   getAllUsers: getAllUsers,
+  getCreateNewUser: getCreateNewUser,
+  DeleteUser: DeleteUser,
+  UpdateUser: UpdateUser,
 };

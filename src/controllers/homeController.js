@@ -42,8 +42,6 @@ let editCRUD = async (req, res) => {
     return res.send("Error");
   } else {
     let getInfor = await CRUDService.getInforByID(userID);
-    console.log("========================");
-    console.log(getInfor);
     return res.render("views-editCRUD.ejs", {
       getInforID: getInfor, // taken ID
     });
