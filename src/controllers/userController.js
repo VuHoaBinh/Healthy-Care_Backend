@@ -6,7 +6,7 @@ let handleAllUsers = async (req, res) => {
   // null
   if (!id) {
     return res.status(200).json({
-      errCode: 0,
+      errCode: 1,
       errMessage: "Wrong",
       users: [],
     });
@@ -16,7 +16,7 @@ let handleAllUsers = async (req, res) => {
   console.log(users);
   return res.status(200).json({
     errCode: 0,
-    errMessage: " get oke",
+    errMessage: "get oke",
     users,
   });
 };

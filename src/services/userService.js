@@ -101,25 +101,23 @@ let checkUserMail = (userEmail) => {
 let getCreateNewUser = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let hashPasswordFromBcrypt = await hashUserPassword(data.password);
       let check = await checkUserMail(data.email);
       if (check === true) {
-        resolve({ errCode: 0, errMessage: "Wrong" });
-      } else {
-        await db.User.create({
-          email: data.email,
-          password: hashPasswordFromBcrypt,
-          firstName: data.firstname,
-          lastName: data.lastname,
-          address: data.address,
-          phone: data.phone,
-          gender: data.gender === "male" ? true : false,
-          // image: data.STRING,
-          roleID: data.roleID,
-          position: data.position,
-        });
-        resolve({ errCode: 0, errMessage: "OK" });
+        resolve({ errCode: 1, errMessage: "Wrong" });
       }
+      let hashPasswordFromBcrypt = await hashUserPassword(data.password);
+      await db.User.create({
+        email: data.email,
+        password: hashPasswordFromBcrypt,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        address: data.address,
+        phone: data.phone,
+        gender: data.gender === "male" ? true : false,
+        roleID: data.roleID,
+        position: data.position,
+      });
+      resolve({ errCode: 0, errMessage: "OK create" });
     } catch (e) {
       reject(e);
     }
