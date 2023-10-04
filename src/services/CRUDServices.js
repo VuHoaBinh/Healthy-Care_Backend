@@ -87,6 +87,10 @@ let updateInfor = (data) => {
         user.lastName = data.lastName;
         user.address = data.address;
         user.phone = data.phone;
+        user.gender = data.gender === "male" ? true : false;
+        user.image = "null";
+        user.roleID = data.roleID;
+        user.position = data.position;
 
         await user.save(); // save data
 

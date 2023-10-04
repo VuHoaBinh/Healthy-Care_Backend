@@ -143,16 +143,24 @@ let DeleteUser = (id) => {
 let UpdateUser = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
-      if (data.id) {
+      if (!data.id) {
         resolve({ errCode: 2, errMessage: "Wrong to find" });
       }
 
-      let user = await db.User.findOne({ where: { id: data.id }, raw: false });
+      let user = await db.User.findOne({
+        where: { id: data.id },
+        raw: false,
+      });
       if (user) {
         user.firstName = data.firstName;
         user.lastName = data.lastName;
         user.address = data.address;
         user.phone = data.phone;
+        user.phone = data.phone;
+        user.gender = data.gender === "male" ? true : false;
+        user.image = "null";
+        user.roleID = data.roleID;
+        user.position = data.position;
 
         await user.save(); // save data
         resolve({ errCode: 0, errMessage: "Update ok" });
