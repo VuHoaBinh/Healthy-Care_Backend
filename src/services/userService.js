@@ -1,3 +1,4 @@
+// const { all } = require("sequelize/types/lib/operators");
 const db = require("../models/index");
 const bcrypt = require("bcryptjs");
 
@@ -173,10 +174,30 @@ let UpdateUser = (data) => {
   });
 };
 
+let getAllCode = (typeInput) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!typeInput) {
+        resolve({ errCode: 1, errMessage: "Wrong required!!" });
+      } else {
+        let res = {};
+        let allCode = await db.Allcodes.findAll({
+          where: { type: typeInput },
+        }); //in model
+        res.errCode = 0;
+        res.data = allCode;
+        resolve(res);
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 module.exports = {
   handleUserlogin: handleUserlogin,
   getAllUsers: getAllUsers,
   getCreateNewUser: getCreateNewUser,
   DeleteUser: DeleteUser,
   UpdateUser: UpdateUser,
+  getAllCode: getAllCode,
 };
