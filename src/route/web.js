@@ -30,7 +30,7 @@ let initialWebRoutes = (app) => {
   router.delete("/api/delete-user", userController.handleDeleteUser); //
 
   // get API
-  router.get("/allCode", userController.getAllCode);
+  router.get("/api/allCode", userController.getAllCode);
   return app.use("/", router);
 };
 module.exports = initialWebRoutes;
