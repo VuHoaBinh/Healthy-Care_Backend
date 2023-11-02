@@ -1,9 +1,9 @@
-## NODEJS - SERN
+## NODEJS - SERN (SQL, Express, ReactJS, NodeJS)
 
-## NODE (v20.3.1)
+
 
 ## 💻 GETTING STARTED
-
+## NODE (v20.3.1)
 ``` bash
 git clone https://github.com/VuHoaBinh/Health-Care-Backend.git
 ```
