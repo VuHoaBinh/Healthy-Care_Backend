@@ -65,7 +65,6 @@ let getAllCode = async (req, res) => {
   try {
     setTimeout(async () => {
       let users = await userService.getAllCode(req.query.type);
-      console.log("all code user: ", users);
       return res.status(200).json(users);
     }, 5000);
   } catch (e) {
