@@ -1,9 +1,9 @@
-## NODEJS - SERN (SQL, Express, ReactJS, NodeJS)
+## NODEJS
 
-
+## NODE (v20.3.1)
 
 ## 💻 GETTING STARTED
-## NODE (v20.3.1)
+
 ``` bash
 git clone https://github.com/VuHoaBinh/Health-Care-Backend.git
 ```
@@ -70,3 +70,7 @@ That's it, folks. Now you can have multiple versions of node installed on your m
 ``` bash
 nvm install 20.3.1
 ```
+
+
+## run 1 migrate
+`npx sequelize-cli db:migrate --to migration-create-user.js `

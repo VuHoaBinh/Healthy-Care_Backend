@@ -114,7 +114,7 @@ let getCreateNewUser = (data) => {
           lastName: data.lastName,
           address: data.address,
           phone: data.phone,
-          gender: data.gender === "male" ? true : false,
+          gender: data.gender,
           roleID: data.roleID,
           position: data.position,
         });
